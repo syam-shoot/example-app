@@ -20,4 +20,4 @@ jobs:
     - name: Build docker image
       run: docker build -t vioifc/travellist:${{ github.run_number }}
     - name: Push image to docker hub
-      run: docker push vioifc/travellist:${{ github.run_number }}122
+      run: docker push vioifc/travellist:${{ github.run_number }}
