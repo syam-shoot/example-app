@@ -1,13 +1,13 @@
-FROM golang:alpine3.16 AS build
-WORKDIR /
-COPY go.mod .
-COPY go.sum .
-RUN go mod download
-COPY *.go .
-RUN go build -o /app
+FROM golang:1.17-alpine
 
-FROM alpine:latest
-WORKDIR /
-COPY --from=build /app /app
-EXPOSE 8080
-ENTRYPOINT [ "/app" ]
+WORKDIR /app
+
+COPY go.mod ./
+COPY *.go ./
+COPY static ./static
+
+RUN go build -o /belajar-cicd-pemula
+
+EXPOSE 3000
+
+CMD ["/belajar-cicd-pemula"]
